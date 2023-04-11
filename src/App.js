@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+
+    // 변수, 상수, 함수 등이 들어가는 자리.
+
+    // 상수 (const, let) = 변하지 않는 값.
+    // 변수 (var) = 데이터가 수시로 변하는 값.
+
+    //initialState = 초기값.
+    const [memo, setMome] = useState("")
+
+    const changeMemo = () => {
+        setMome("World")
+    }
+
+    // 화면에 보여지는 부분, html로 표현될 것. 상수 표현은 {} 안에.
+    return (
+        <div>
+            <h1>{memo}</h1>
+            <button onClick={changeMemo}>change</button>
+        </div>
+    );
+};
 
 export default App;
