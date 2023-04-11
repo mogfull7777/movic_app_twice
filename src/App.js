@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
 const App = () => {
 
 
-    // 1. 영화 데이터를 담는 그룻을 설정.
+    // 1.  useState => 영화 데이터를 담는 그룻을 설정.
     const [movies, setMovies] = useState([])
 
     // 2. 영화 정보를 가져오는 함수를 선언. async - await sms WKr
@@ -26,10 +26,21 @@ const App = () => {
 
     }
 
+    // 무조건 실행되는 함수.
+    useEffect(() => {
+        getMovies()
+    }, [])
+
     return (
         <div>
             <h1>{movies.length}</h1>
-            <button onClick={getMovies}>영화 불러오기</button>
+            {movies && movies.map(m => (
+                <div>
+                    <h1>{m.title}</h1>
+                    <h3>출시일 : {m.release_date}</h3>
+                    <h2>평점 : {m.vote_average}</h2>
+                </div>
+            ))}
         </div>
     );
 };
@@ -40,3 +51,5 @@ export default App;
 // 2. = 을 기준으로 오른쪽에서 왼쪽으로 치환한다. ex) 1 = 2 => 1은 2다 X,  2가 1이다 O
 // 3. . 하위 메소드를 호출할 때 사용
 // 4. , 그리고로 해석한다.
+
+// 외우는 거 X, 다시 할 수 있을정도로
