@@ -13,6 +13,7 @@ const App = () => {
         const address = "https://api.themoviedb.org/3/movie/now_playing?api_key=8597e491ed6e80f0de12e349eb60ea6e&language=en-US&page=1"
         try {
             // 1순위 실행
+            // if 문 보단 거시적.
             // post = 던져줌. get = 가져옴. put = 수정. delete = 식제.
             const res = await axios.get(address)
 
@@ -36,7 +37,7 @@ const App = () => {
             <Row>
                 {movies && movies.map(m => (
                     <Col className={"mt-5"}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '20rem' }}>
                             <Card.Img variant="top" src={"https://image.tmdb.org/t/p/w500" + m.poster_path} />
                             <Card.Body>
                                 <Card.Title>{m.title.slice(0, 15)}</Card.Title>
